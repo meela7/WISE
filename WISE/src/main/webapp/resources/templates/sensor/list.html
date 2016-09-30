@@ -1,0 +1,81 @@
+<div class="panel panel-info">
+	<div class="panel-heading">
+		Sensor List
+		<div class="form-inline pull-right">
+			<label for="search"> Search: </label> <input type="text" id="search"
+				class="form-control" ng-model="search" placeholder="search... " />
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="row content">
+			<div class="col-sm-2 sideav">
+				<div>
+					<h5></h5>
+				</div>
+				<form class="form">
+					<label for="sensorName">Sensor Name:</label> 
+					<input type="text" id="sensorName" class="form-control" ng-model="search.name">
+					<label for="status">Status:</label> 
+					<input type="text" id="status" class="form-control" ng-model="search.status">
+					<label for="manager">Manager:</label> 
+					<input type="text" id="manager" class="form-control" ng-model="search.createdBy">
+					<label for="createdAt"> Registered Time:</label> 
+					<input type="text" id="createdAt" class="form-control" ng-model="search.createdAt">
+
+				</form>
+			</div>
+			<div class="col-sm-10 text-left">
+				<table class="table table-striped">
+					<thead>
+						<tr class="paginationclass">
+							<th>Index</th>
+							<th>Name</th>
+							<th>Registered Time </th>
+							<th>Registered By</th>
+							<th>Status</th>
+							<th>Members</th>
+
+							<th colspan="2">
+								<button ng-click="createSensor()"
+									class="btn btn-sm btn-info pull-right">
+									<span class="glyphicon glyphicon-plus"></span> Add New Sensor
+								</button>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="paginationclass "
+							ng-repeat="sensor in sensors | filter:search | pagination: (currentPage-1) * numPerPage | limitTo: numPerPage">
+							<td>{{  $index + 1 + (currentPage-1)*10 }}</td>
+							<td>{{ sensor.name }}</td>
+							<td>{{ sensor.createdAt }}</td>
+							<td>{{ sensor.createdBy }}</td>
+							<td>{{ sensor.status }}</td>
+							<td>{{ sensor.members }}</td>
+
+							<td colspan="2">
+								<div class="form-inline pull-right">
+
+									<button type="button" ng-click="editSensor(sensor.id)"
+										class="btn btn-sm btn-info">
+										<span class="glyphicon glyphicon-edit"></span> Detail
+									</button>
+									<button type="button"
+										ng-click="deleteSensor(sensor.id)"
+										class="btn btn-sm btn-warning">
+										<span class="glyphicon glyphicon-trash"></span> Delete
+									</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div align="center">
+					<uib-pagination ng-model="currentPage" total-items="sensors.length"
+						max-size="maxSize" items-per-page="numPerPage"
+						boundary-links="true"> </uib-pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 5. 14 ???? 3:17:34 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.m4.model.Site" table="Site">
+        <id name="SiteID" type="int">
+            <column name="SiteID" />
+            <generator class="native" />
+        </id>
+        <property name="SiteName" type="java.lang.String">
+            <column name="SiteName" />
+        </property>
+        <property name="Latitude" type="java.lang.String">
+            <column name="Latitude" />
+        </property>
+        <property name="Longitude" type="java.lang.String">
+            <column name="Longitude" />
+        </property>
+        <property name="Address" type="java.lang.String">
+            <column name="Address" />
+        </property>
+        <property name="ImageLink" type="java.lang.String">
+            <column name="ImageLink" />
+        </property>
+        <property name="Description" type="java.lang.String">
+            <column name="Description" />
+        </property>
+    </class>
+</hibernate-mapping>

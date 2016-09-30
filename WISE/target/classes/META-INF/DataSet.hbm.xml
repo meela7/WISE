@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 5. 25 ???? 10:43:31 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.m4.model.DataSet" table="DataSet">
+        <id name="DataSetID" type="int">
+            <column name="DataSetID" />
+            <generator class="native" />
+        </id>
+        <property name="DataSetName" type="java.lang.String">
+            <column name="DataSetName" />
+        </property>
+        <many-to-one name="Site" class="org.cilab.m4.model.Site" fetch="join">
+            <column name="SiteID" />
+        </many-to-one>
+        <many-to-one name="Source" class="org.cilab.m4.model.Source" fetch="join">
+            <column name="SourceID" />
+        </many-to-one>
+        <many-to-one name="Variable" class="org.cilab.m4.model.Variable" fetch="join">
+            <column name="VariableID" />
+        </many-to-one>
+        <many-to-one name="Method" class="org.cilab.m4.model.Method" fetch="join">
+            <column name="MethodID" />
+        </many-to-one>
+        <many-to-one name="Entity" class="org.cilab.m4.model.Entity" fetch="join">
+            <column name="EntityID" />
+        </many-to-one>
+        <property name="StartDateTime" type="java.lang.String">
+            <column name="StartDateTime" />
+        </property>
+        <property name="EndDateTime" type="java.lang.String">
+            <column name="EndDateTime" />
+        </property>
+    </class>
+</hibernate-mapping>

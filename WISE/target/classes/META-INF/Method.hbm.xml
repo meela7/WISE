@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 5. 13 6:38:14 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="org.cilab.m4.model">
+	<class name="org.cilab.m4.model.Method" table="Method">
+		<id name="MethodID" type="int">
+			<column name="MethodID" />
+			<generator class="native" />
+		</id>
+		<property name="MethodType" type="java.lang.String">
+			<column name="MethodType"></column>
+		</property>
+		<property name="MethodName" type="java.lang.String">
+			<column name="MethodName"></column>			
+		</property>
+	</class>
+</hibernate-mapping>

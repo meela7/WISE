@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 6. 10 ???? 10:48:02 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="org.cilab.m4.model">
+    <joined-subclass name="org.cilab.m4.model.Fish" extends="org.cilab.m4.model.Entity" table="Fish" lazy="false">
+        <key>
+            <column name="FishID" />
+        </key>
+        <property name="FishClass" type="java.lang.String">
+            <column name="`Class`" />
+        </property>
+        <property name="Order" type="java.lang.String">
+            <column name="`Order`" />
+        </property>
+        <property name="ToleranceGuild" type="java.lang.String">
+            <column name="ToleranceGuild" />
+        </property>
+        <property name="ImageLink" type="java.lang.String">
+            <column name="ImageLink" />
+        </property>
+        <property name="Description" type="java.lang.String">
+            <column name="Description" />
+        </property>
+        <property name="ScientificName" type="java.lang.String">
+            <column name="ScientificName" />
+        </property>
+        <property name="HabitatGuild" type="java.lang.String">
+            <column name="HabitatGuild" />
+        </property>
+        <property name="EndangeredSpecies" type="java.lang.String">
+            <column name="EndangeredSpecies" />
+        </property>
+        <property name="TrophicGuild" type="java.lang.String">
+            <column name="TrophicGuild" />
+        </property>
+        <property name="NaturalMonument" type="java.lang.String">
+            <column name="NaturalMonument" />
+        </property>
+        <property name="InvasiveSpecies" type="java.lang.String">
+            <column name="InvasiveSpecies" />
+        </property>
+        <property name="Family" type="java.lang.String">
+            <column name="Family" />
+        </property>
+        <property name="Species" type="java.lang.String">
+            <column name="Species" />
+        </property>
+        <property name="EndemicSpecies" type="java.lang.String">
+            <column name="EndemicSpecies" />
+        </property>
+    </joined-subclass>
+</hibernate-mapping>

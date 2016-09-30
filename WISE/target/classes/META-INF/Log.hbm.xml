@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 6. 16 ???? 8:11:35 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.s4rm.model.Log" table="PersistenceLog">
+        <id name="LogID" type="int">
+            <column name="LogID" />
+            <generator class="assigned" />
+        </id>
+        <property name="StreamID" type="java.lang.String">
+            <column name="StreamID" />
+        </property>
+        <property name="StartedAt" type="java.lang.String">
+            <column name="StartedAt" />
+        </property>
+        <property name="StopedAt" type="java.lang.String">
+            <column name="StopedAt" />
+        </property>
+    </class>
+</hibernate-mapping>

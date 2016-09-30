@@ -1,0 +1,21 @@
+<div class="panel panel-info">
+	<div class="panel-heading">Create New Tag</div>
+	<div class="panel-body">
+		<form novalidate="novalidate" class="form-horizontal">
+			
+			<div class="form-group">
+				<label for="tag" class="col-sm-2 control-label">Tag: </label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="tag.name" class="form-control"
+						id="tag" placeholder="" />
+				</div>
+			</div>
+			
+			<div class="btn-group btn-md pull-right">
+				<button type="button" ng-click="createTag(tag)"
+					class="btn btn-info ">Create</button>
+				<button type="button" ng-click="cancel()" class="btn btn-warning">Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

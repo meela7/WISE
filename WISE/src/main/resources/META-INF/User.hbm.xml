@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 6. 15 ???? 9:47:47 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.s4rm.model.User" table="User">
+        <id name="UserID" type="java.lang.String">
+            <column name="UserID" />
+            <generator class="assigned" />
+        </id>
+        <property name="SurName" type="java.lang.String">
+            <column name="SurName" />
+        </property>
+        <property name="GivenName" type="java.lang.String">
+            <column name="GivenName" />
+        </property>
+        <property name="UserName" type="java.lang.String">
+            <column name="UserName" />
+        </property>
+        <property name="Email" type="java.lang.String">
+            <column name="Email" />
+        </property>
+        <property name="Profile" type="java.lang.String">
+            <column name="Profile" />
+        </property>
+    </class>
+</hibernate-mapping>

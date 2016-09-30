@@ -1,0 +1,55 @@
+<div class="panel panel-info">
+	<div class="panel-heading">Create New Site</div>
+	<div class="panel-body">
+		<form novalidate="novalidate" class="form-horizontal">
+			
+			<div class="form-group">
+				<label for="siteName" class="col-sm-2 control-label">SiteName:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="site.siteName" class="form-control"
+						id="siteName" placeholder="" />
+				</div>
+			</div>			
+			<div class="form-group">
+				<label for="latitude" class="col-sm-2 control-label">Latitude:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="site.latitude"
+						class="form-control" id="latitude" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="longitude" class="col-sm-2 control-label">Longitude:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="site.longitude"
+						class="form-control" id="longitude" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="address" class="col-sm-2 control-label">Address:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="site.address" class="form-control"
+						id="address" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="image" class="col-sm-2 control-label">Image:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="site.imageLink"
+						class="form-control" id="image" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description" class="col-sm-2 control-label">Description:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="site.description"
+						class="form-control" id="description" placeholder="" />
+				</div>
+			</div>
+
+			<div class="btn-group btn-md pull-right">
+				<button type="button" ng-click="createSite(site)" class="btn btn-info ">Create</button>
+				<button type="button" ng-click="cancel()" class="btn btn-warning">Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

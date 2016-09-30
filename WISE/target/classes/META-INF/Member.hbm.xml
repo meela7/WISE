@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 6. 16 ???? 7:58:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.s4rm.model.Member" table="Member">
+        <id name="ID" type="java.lang.String">
+            <column name="ParentID" />
+            <generator class="assigned" />
+        </id>
+        <list name="Members" inverse="false" table="Sensor" lazy="true" access="field">
+            <key>
+                <column name="MemberID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="org.cilab.s4rm.model.Sensor" />
+        </list>
+    </class>
+</hibernate-mapping>

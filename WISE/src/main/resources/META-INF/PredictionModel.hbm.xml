@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 7. 5 ???? 3:41:09 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="org.cilab.m4.model">
+    <joined-subclass name="org.cilab.m4.model.PredictionModel" extends="org.cilab.m4.model.Method" table="PredictionModel" lazy="false">
+        <key>
+            <column name="ModelID" />
+        </key>
+        <property name="ModelingMethod" type="java.lang.String">
+            <column name="ModelingMethod" />
+        </property>
+        <property name="Script" type="java.lang.String">
+            <column name="Script" />
+        </property>
+        <property name="TrainingData" type="java.lang.String">
+            <column name="TrainingData" />
+        </property>
+        <property name="Description" type="java.lang.String">
+            <column name="Description" />
+        </property>
+        <property name="ScriptCode" type="java.lang.String">
+            <column name="ScriptCode" />
+        </property>
+        <property name="OutputData" type="java.lang.String">
+            <column name="OutputData" />
+        </property>
+        <property name="PredictType" type="java.lang.String">
+            <column name="PredictType" />
+        </property>
+        <property name="ExecuteEnvironment" type="java.lang.String">
+            <column name="ExecuteEnvironment" />
+        </property>
+        <property name="InputData" type="java.lang.String">
+            <column name="InputData" />
+        </property>
+    </joined-subclass>
+</hibernate-mapping>

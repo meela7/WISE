@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 6. 13 ???? 2:05:57 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.s4rm.model.Tag" table="TagCV">
+        <id name="TagID" type="int">
+            <column name="TagID" />
+            <generator class="assigned" />
+        </id>
+        <property name="Name" type="java.lang.String">
+            <column name="Name" />
+        </property>
+    </class>
+</hibernate-mapping>

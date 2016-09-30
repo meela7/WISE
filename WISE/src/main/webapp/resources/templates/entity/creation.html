@@ -1,0 +1,28 @@
+<div class="panel panel-info">
+	<div class="panel-heading">Create New Fish</div>
+	<div class="panel-body">
+		<form novalidate="novalidate" class="form-horizontal">
+			
+			<div class="form-group">
+				<label for="entityType" class="col-sm-2 control-label">Type: </label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="entity.entityType" class="form-control"
+						id="entityType" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="entityName" class="col-sm-2 control-label">Entity: </label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="entity.entityName" class="form-control"
+						id="entityName" placeholder="" />
+				</div>
+			</div>
+			
+			<div class="btn-group btn-md pull-right">
+				<button type="button" ng-click="createEntity(entity)"
+					class="btn btn-info ">Create</button>
+				<button type="button" ng-click="cancel()" class="btn btn-warning">Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,154 @@
+<div class="panel panel-info">
+	<div class="panel-heading">Stream Detail</div>
+	<div class="panel-body">
+		
+		<form class="form-horizontal">
+			<div class="form-group">
+				<input type="hidden" ng-model="stream.id" class="form-control"
+						id="streamName" placeholder="" />
+			</div>
+			<div class="form-group">
+				<label for="streamName" class="col-sm-2 control-label">Stream Name:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.name" class="form-control"
+						id="streamName" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="sensorID" class="col-sm-2 control-label">Sensor ID:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.sensorID" class="form-control"
+						id="sensorID" placeholder="" />
+				</div>
+			</div>			
+			<div class="form-group">
+				<label for="createdAt" class="col-sm-2 control-label">Created Time:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.createdAt" class="form-control"
+						id="createdAt" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="createdBy" class="col-sm-2 control-label">Created By:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.createdBy"
+						class="form-control" id="createdBy" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="public" class="col-sm-2 control-label">Public:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.public"
+						class="form-control" id="public" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="status" class="col-sm-2 control-label">Status:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.status" class="form-control"
+						id="status" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="subs" class="col-sm-2 control-label">Subscribe #:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.subs" class="form-control"
+						id="subs" placeholder="" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="metadata" class="col-sm-2 control-label">Metadata List:</label>
+				<div class="col-sm-10">	
+		            
+		            <div class="col-sm-4">
+		              <div class="list-group" id="list1">
+		                <div class="list-group-item list-group-item-info">Selected Stream Metadata</div>
+		                <span ng-repeat="smeta in stream.metas">
+		                  <div class="list-group-item">
+		                  	{{smeta.key}} : {{smeta.value}}
+		                    <input ng-click="selectB(smeta.key)" name="selectedB[]" value="{{smeta.key}}" ng-checked="selectedB.indexOf(smeta.key) > -1" type="checkbox" class="pull-right">
+		                  </div>
+		                </span>
+		              </div>
+		            </div>
+		            <div class="col-md-2 v-center text-center">
+		              <div class="btn-group">
+		                <button title="Send to list 1" class="btn btn-default" ng-click="aToB()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+		                <button title="Send to list 2" class="btn btn-default" ng-click="bToA()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+		                
+		              </div>
+		            </div>
+		            <div class="col-sm-4">
+		              <div class="list-group" id="list2">
+		                <div class="list-group-item list-group-item-info">Meatadata List</div>
+		                <span ng-repeat="meta in listA">
+		                  <div class="list-group-item"> 
+		                  	{{meta.key}} : {{meta.value}}
+		                    <input ng-click="selectA(meta.key)" name="selectedA[]" value="{{meta.key}}" ng-checked="selectedA.indexOf(meta.key) > -1" type="checkbox" class="pull-right">
+		                  </div>
+		                </span>
+		              </div>
+		            </div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="tag" class="col-sm-2 control-label">Tag List:</label>
+				<div class="col-sm-10">					
+					<div class="col-sm-4">
+		              <div class="list-group" id="tagList1">
+		                <div class="list-group-item list-group-item-info">Selected Stream Tag</div>
+		                <span ng-repeat="stag in stream.tags">
+		                  <div class="list-group-item">
+		                  	{{stag.name}}
+		                    <input ng-click="selectTagB(stag.name)" name="selectedTagB[]" value="{{stag.name}}" ng-checked="selectedTagB.indexOf(stag.name) > -1" type="checkbox" class="pull-right">
+		                  </div>
+		                </span>
+		              </div>
+		            </div>
+		            <div class="col-md-2 v-center text-center">
+		              <div class="btn-group">
+		                <button title="Send to list 1" class="btn btn-default" ng-click="tagToB()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+		                <button title="Send to list 2" class="btn btn-default" ng-click="tagToA()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+		                
+		              </div>
+		            </div>
+		            <div class="col-sm-4">
+		              <div class="list-group" id="tagList2">
+		                <div class="list-group-item list-group-item-info">Tag List</div>
+		                <span ng-repeat="tag in tagListA">
+		                  <div class="list-group-item"> 
+		                  	{{tag.name}}
+		                  	<input ng-click="selectTagA(tag.name)" name="selectedTagA[]" value="{{tag.name}}" ng-checked="selectedTagA.indexOf(tag.name) > -1" type="checkbox" class="pull-right">
+		                  </div>
+		                </span>
+		              </div>
+		            </div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="dataSet" class="col-sm-2 control-label">DataSet:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.dataSet"
+						class="form-control" id="dataSet" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description" class="col-sm-2 control-label">Description:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.desc"
+						class="form-control" id="description" placeholder="" />
+				</div>
+			</div>
+			
+			<div class="btn-group btn-md pull-right">
+
+				<button type="button" ng-click="updateStream(stream)"
+					class="btn btn-info">
+					<span class="glyphicon glyphicon-edit"></span> Save
+				</button>
+				<button type="button" ng-click="cancel()" class="btn btn-warning">Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

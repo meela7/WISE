@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+  <property name="hibernate.show_sql">true</property>
+  <mapping resource="META-INF/Tag.hbm.xml"/>
+  <mapping resource="META-INF/User.hbm.xml"/>
+  <mapping resource="META-INF/Metadata.hbm.xml"/>
+  <mapping resource="META-INF/Sensor.hbm.xml"/>
+  <mapping resource="META-INF/Sensor_Meta.hbm.xml"/>
+  <mapping resource="META-INF/Sensor_Tag.hbm.xml"/>
+  <mapping resource="META-INF/Stream.hbm.xml"/>
+  <mapping resource="META-INF/Stream_Meta.hbm.xml"/>
+  <mapping resource="META-INF/Stream_Tag.hbm.xml"/>
+  <mapping resource="META-INF/Log.hbm.xml"/>
+  
+  <mapping resource="META-INF/Entity.hbm.xml"/>
+  <mapping resource="META-INF/Fish.hbm.xml"/>
+  <mapping resource="META-INF/Method.hbm.xml"/>  
+  <mapping resource="META-INF/Instrument.hbm.xml"/>
+  <mapping resource="META-INF/Prediction.hbm.xml"/>
+  <mapping resource="META-INF/PredictionModel.hbm.xml"/>
+  <mapping resource="META-INF/Site.hbm.xml"/>
+  <mapping resource="META-INF/Source.hbm.xml"/>
+  <mapping resource="META-INF/Unit.hbm.xml"/>
+  <mapping resource="META-INF/Variable.hbm.xml"/>
+  <mapping resource="META-INF/DataSet.hbm.xml"/>
+</session-factory>
+</hibernate-configuration>

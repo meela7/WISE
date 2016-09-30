@@ -1,0 +1,73 @@
+<div class="panel panel-info">
+	<div class="panel-heading">
+		Entity List
+		<div class="form-inline pull-right">
+			<label for="search"> Search: </label> <input type="text" id="search"
+				class="form-control" ng-model="search" placeholder="search... " />
+		</div>
+
+	</div>
+	<div class="panel-body">
+		<div class="row content">
+			<div class="col-sm-2 sideav">
+				<div>
+					<h5></h5>
+				</div>
+				<form class="form">
+					<label for="entityType" class="control-label"> Type: </label> 
+					<input type="text" id="entityType" class="form-control hasclear"
+						ng-model="search.entityType"> 
+					<label for="entityName" class="control-label "> Entity Name: </label> <input type="text"
+						id="entityName" class="form-control hasclear"
+						ng-model="search.entityName"> 
+					
+				</form>
+			</div>
+			<div class="col-sm-10 text-left">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Entity Type</th>
+							<th>Entity Name</th>
+							
+							<th colspan="2">
+								<button ng-click="createEntity()"
+									class="btn btn-sm btn-info pull-right">
+									<span class="glyphicon glyphicon-plus"></span> Create Entity
+								</button>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							ng-repeat="entity in entities | filter:search | pagination: (currentPage-1) * numPerPage | limitTo: numPerPage">
+
+							<td>{{ entity.entityID }}</td>
+							<td>{{ entity.entityType }}</td>
+							<td>{{ entity.entityName }}</td>
+							
+							<td>
+								<div class="form-inline pull-right">
+									<button type="button" ng-click="editEntity(entity.entityID)"
+										class="btn btn-sm btn-info">
+										<span class="glyphicon glyphicon-edit"></span> Detail
+									</button>
+									<button type="button" ng-click="deleteEntity(entity)"
+										class="btn btn-sm btn-warning">
+										<span class="glyphicon glyphicon-trash"></span> Delete
+									</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div align="center">
+					<uib-pagination ng-model="currentPage" total-items="fishes.length"
+						max-size="maxSize" items-per-page="numPerPage"
+						boundary-links="true"> </uib-pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

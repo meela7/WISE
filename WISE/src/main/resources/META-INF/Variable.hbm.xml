@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 5. 16 ???? 3:32:58 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.m4.model.Variable" table="Variable">
+        <id name="VariableID" type="int">
+            <column name="VariableID" />
+            <generator class="native" />
+        </id>
+        <property name="VariableName" type="java.lang.String">
+            <column name="VariableName" />
+        </property>
+        <many-to-one name="Unit" class="org.cilab.m4.model.Unit" fetch="join">
+            <column name="UnitID" />
+        </many-to-one>
+        <property name="ValueType" type="java.lang.String">
+            <column name="ValueType" />
+        </property>
+        <property name="Description" type="java.lang.String">
+            <column name="Description" />
+        </property>
+    </class>
+</hibernate-mapping>

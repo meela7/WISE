@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 5. 16 ???? 3:30:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.m4.model.Unit" table="Unit">
+        <id name="UnitID" type="int">
+            <column name="UnitID" />
+            <generator class="native" />
+        </id>
+        <property name="UnitName" type="java.lang.String">
+            <column name="UnitName" />
+        </property>
+        <property name="UnitNameLong" type="java.lang.String">
+            <column name="UnitNameLong" />
+        </property>
+    </class>
+</hibernate-mapping>

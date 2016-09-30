@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 6. 15 ???? 9:47:47 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.s4rm.model.Sensor" table="Sensor">
+        <id name="Id" type="java.lang.String">
+            <column name="SensorID" />
+            <generator class="assigned" />
+        </id>
+        <property name="Name" type="java.lang.String">
+            <column name="Name" />
+        </property>
+        <property name="CreatedAt" type="java.lang.String">
+            <column name="CreatedAt" />
+        </property>
+        <property name="CreatedBy" type="java.lang.String">
+            <column name="CreatedBy" />
+        </property>
+        <!-- <many-to-one name="CreatedBy" class="org.cilab.s4rm.model.User" fetch="join">
+            <column name="CreatedBy" />
+        </many-to-one> -->
+        <property name="Status" type="int">
+            <column name="Status" />
+        </property>
+        <!-- <many-to-one name="Stream" class="org.cilab.s4rm.model.Stream" fetch="join">
+            <column name="StreamID" />
+        </many-to-one> -->
+        <property name="StreamID" type="java.lang.String">
+            <column name="StreamID" />
+        </property>
+        <property name="Members" type="int">
+            <column name="Members" />
+        </property>
+        <bag name="Metas" inverse="true" table="Sensor_Meta" lazy="false">
+            <key>
+                <column name="SensorID" />
+            </key>
+            <one-to-many class="org.cilab.s4rm.model.Sensor_Meta" />
+        </bag>
+      	<bag name="Tags" inverse="true" table="Sensor_Tag" lazy="false">
+            <key>
+                <column name="SensorID" />
+            </key>
+            <one-to-many class="org.cilab.s4rm.model.Sensor_Tag" />
+        </bag>
+        <property name="Desc" type="java.lang.String">
+            <column name="Description" />
+        </property>
+    </class>
+</hibernate-mapping>

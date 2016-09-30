@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 6. 17 ???? 5:45:19 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.s4rm.model.Stream_Meta" table="Stream_Meta">
+        <id name="MetadataID" type="int">
+            <column name="StreamMetaID" />
+            <generator class="increment" />
+        </id>
+ 		<property name="StreamID" type="java.lang.String">
+            <column name="StreamID" />
+        </property>
+       	<!-- <many-to-one name="Stream" class="org.cilab.s4rm.model.Stream">
+            <column name="StreamID" not-null="true" />
+        </many-to-one> -->
+        <property name="Key" type="java.lang.String">
+            <column name="`Key`" />
+        </property>
+        <property name="Value" type="java.lang.String">
+            <column name="`Value`" />
+        </property>
+    </class>
+</hibernate-mapping>

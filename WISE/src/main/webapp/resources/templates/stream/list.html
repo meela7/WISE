@@ -1,0 +1,90 @@
+<div class="panel panel-info">
+	<div class="panel-heading">
+		Stream List 
+		<div class="form-inline pull-right">
+			<label for="species"> Search: </label> <input type="text" id="search"
+				class="form-control" ng-model="search" placeholder="search... " />
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="row content">
+			<div class="col-sm-2 sideav">
+				<div>
+					<h5></h5>
+				</div>
+				<form class="form">
+					<label for="streamName" class="control-label">Stream: </label> 
+					<input type="text" id="sensor" class="form-control hasclear"
+						ng-model="search.name"> 
+					<label for="createdAt" class="control-label">Created Time: </label> 
+					<input type="text" id="createdAt" class="form-control hasclear"
+						ng-model="search.createdAt"> 
+					<label for="createdBy" class="control-label">Created By: </label> 
+					<input type="text" id="createdBy" class="form-control hasclear" ng-model="search.createdBy">
+
+				</form>
+			</div>
+			<div class="col-sm-10 text-left">
+				<table class="table table-striped">
+					<thead>
+						<tr class="paginationclass">
+							<th>Index</th>
+							<th>Name</th>
+							<th>Created Time</th>
+							<th>Created By</th>
+							<th>Status</th>
+							
+							<th colspan="2">
+								<button ng-click="createStream()"
+									class="btn btn-sm btn-info pull-right">
+									<span class="glyphicon glyphicon-plus"></span> Add New Stream
+								</button>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="paginationclass"
+							ng-repeat="stream in streams | filter:search | pagination: (currentPage-1) * numPerPage | limitTo: numPerPage">
+							<td>{{  $index + 1 + (currentPage-1)*10 }}</td>
+							<td>{{ stream.name }}</td>
+							<td>{{ stream.createdAt }}</td>
+							<td>{{ stream.createdBy }}</td>
+							<td>{{ stream.status }}</td>
+							
+							<td colspan="2">
+								<div class="form-inline pull-right">
+									<button type="button" ng-click="editStream(stream.id)"
+										class="btn btn-sm btn-info">
+										<span class="glyphicon glyphicon-edit"></span> Detail
+									</button>
+									<button type="button" ng-click="deleteStream(stream.id)"
+										class="btn btn-sm btn-warning">
+										<span class="glyphicon glyphicon-trash"></span> Delete
+									</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div align="center">
+					<uib-pagination ng-model="currentPage" total-items="streams.length"
+						max-size="maxSize" items-per-page="numPerPage"
+						boundary-links="true"> </uib-pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(".hasclear").keyup(function() {
+		var t = $(this);
+		t.next('span').toggle(Boolean(t.val()));
+	});
+	$(".clearer").hide($(this).prev('input').val());
+
+	$(".clearer").click(function() {
+		alert("icon clicked!");
+		$(this).prev('input').val('').focus();
+		$(this).hide();
+	});
+</script>

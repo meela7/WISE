@@ -1,0 +1,69 @@
+<div class="panel panel-info">
+	<div class="panel-heading">
+		Method List
+		<div class="form-inline pull-right">
+			<label for="species"> Search: </label> <input type="text" id="search"
+				class="form-control" ng-model="search" placeholder="search... " />
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="row content">
+			<div class="col-sm-2 sideav">
+				<div>
+					<h5></h5>
+				</div>
+				<form class="form">
+					<label for="methodType" class="control-label">MethodType: </label> <input
+						type="text" id="methodType" class="form-control hasclear"
+						ng-model="search.methodType"> <label for="method"
+						class="control-label ">Method: </label> <input type="text"
+						id="method" class="form-control hasclear"
+						ng-model="search.methodName">
+				</form>
+			</div>
+			<div class="col-sm-10 text-left">
+				<table class="table table-striped">
+					<thead>
+						<tr class="paginationclass">
+							<th>ID</th>
+							<th>Method Type</th>
+							<th>Method Name</th>
+							<th colspan="2">
+								<button ng-click="createMethod()"
+									class="btn btn-sm btn-info pull-right">
+									<span class="glyphicon glyphicon-plus"></span> Create Method
+								</button>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="paginationclass"
+							ng-repeat="method in methods | filter:search | pagination: (currentPage-1) * numPerPage | limitTo: numPerPage">
+							<td>{{ method.methodID }}</td>
+							<td>{{ method.methodType }}</td>
+							<td>{{ method.methodName }}</td>
+							<td>
+								<div class="form-inline pull-right">
+									<button type="button" ng-click="editMethod(method.methodID)"
+										class="btn btn-sm btn-info">
+										<span class="glyphicon glyphicon-edit"></span> Detail
+									</button>
+									<button type="button"
+										ng-click="deleteMethod(method)"
+										class="btn btn-sm btn-warning">
+										<span class="glyphicon glyphicon-trash"></span> Delete
+									</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div align="center">
+					<uib-pagination ng-model="currentPage" total-items="methods.length"
+						max-size="maxSize" items-per-page="numPerPage"
+						boundary-links="true"> </uib-pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

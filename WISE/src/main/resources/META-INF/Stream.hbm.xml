@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016. 6. 15 ???? 10:19:44 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.cilab.s4rm.model.Stream" table="Stream">
+        <id name="Id" type="java.lang.String">
+            <column name="StreamID" />
+            <generator class="assigned" />
+        </id>
+        <property name="Name" type="java.lang.String">
+            <column name="Name" />
+        </property>
+        <property name="CreatedBy" type="java.lang.String">
+            <column name="CreatedBy" />
+        </property>
+        <property name="CreatedAt" type="java.lang.String">
+            <column name="CreatedAt" />
+        </property>
+        <property name="Public" type="int">
+            <column name="Public" />
+        </property>
+        <property name="Status" type="int">
+            <column name="Status" />
+        </property>
+        <property name="Subs" type="int">
+            <column name="Subs" />
+        </property>
+        
+        <!-- inverse true - doesn't update related Table -->
+        <!-- inverse false - cause problem when update by insert duplicate metadata every time -->
+        <!-- cascade="save-update" deal with child when update  -->
+        <set name="Metas" inverse="false" table="Stream_Meta" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="StreamID" />
+            </key>
+            <one-to-many class="org.cilab.s4rm.model.Stream_Meta" />
+        </set>
+        <set name="Tags" inverse="false" table="Stream_Tag" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="StreamID" />
+            </key>
+            <one-to-many class="org.cilab.s4rm.model.Stream_Tag" />
+        </set>
+        <property name="SensorID" type="java.lang.String">
+            <column name="SensorID" />
+        </property>
+        <property name="Persistence" type="int">
+            <column name="Persistence" />
+        </property>
+        <property name="PersistenceStartedAt" type="java.lang.String">
+            <column name="PersistenceStartedAt" />
+        </property>
+        <property name="Desc" type="java.lang.String">
+            <column name="Description" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,119 @@
+<div class="panel panel-info">
+	<div class="panel-heading">Create New Stream</div>
+	<div class="panel-body">
+		<form novalidate="novalidate" class="form-horizontal">
+			
+			<div class="form-group">
+				<label for="streamID" class="col-sm-2 control-label">Stream ID:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.id" class="form-control"
+						id="streamID" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="streamName" class="col-sm-2 control-label">Stream Name:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.name" class="form-control"
+						id="streamName" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="sensorID" class="col-sm-2 control-label">Sensor ID:</label>
+				<div class="col-sm-10">
+					<select class="form-control" ng-model="stream.sensorID"
+						ng-options="sensor.id as sensor.name for sensor in sensors ">
+					</select>
+				</div>
+			</div>		
+			<div class="form-group">
+				<label for="createdAt" class="col-sm-2 control-label">Created Time:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.createdAt" class="form-control"
+						id="createdAt" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="createdBy" class="col-sm-2 control-label">Created By:</label>
+				<div class="col-sm-10">
+					<select class="form-control" ng-model="stream.createdBy"
+						ng-options="user.userID as user.givenName for user in users ">
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="public" class="col-sm-2 control-label">Public:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.public"
+						class="form-control" id="public" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="status" class="col-sm-2 control-label">Status:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.status" class="form-control"
+						id="status" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="metadata" class="col-sm-2 control-label">Metadata List:</label>
+				<div class="col-sm-10">					
+					<multiselect
+					    ng-model="stream.metas"
+					    options="meta.key for meta in metas"    
+					    data-multiple="true"                  
+					    data-compare-by="id"                  
+					    scroll-after-rows="5"                
+					    filter-after-rows="5                  
+					    max-width="100"                       
+					    tabindex="-1">                        
+					</multiselect>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="tag" class="col-sm-2 control-label">Tag List:</label>
+				<div class="col-sm-10">					
+					<multiselect
+					    ng-model="stream.tags"
+					    options="tag.name for tag in tags"  
+					    data-multiple="true"                 
+					    data-compare-by="id"          
+					    scroll-after-rows="5"    
+					    filter-after-rows="5   
+					    max-width="100"            
+					    tabindex="-1">        
+					</multiselect>
+					<!-- <select class="form-control" ng-model="sensor.tags"
+						ng-options="tag.tagID as tag.name for tag in tags">
+					</select> -->
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="subs" class="col-sm-2 control-label">Subscribe #:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.subs" class="form-control"
+						id="subs" placeholder="" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="dataSet" class="col-sm-2 control-label">DataSet:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.dataSet"
+						class="form-control" id="dataSet" placeholder="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description" class="col-sm-2 control-label">Description:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="stream.desc"
+						class="form-control" id="description" placeholder="" />
+				</div>
+			</div>
+
+			<div class="btn-group btn-md pull-right">
+				<button type="button" ng-click="createStream(stream)" class="btn btn-info ">Create</button>
+				<button type="button" ng-click="cancel()" class="btn btn-warning">Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

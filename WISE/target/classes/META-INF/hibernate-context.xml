@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<annotation-driven />
+
+	<beans:bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="classpath:META-INF/config.properties" />
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="url" value="${jdbc.databaseurl}" />
+		<beans:property name="username" value="${jdbc.username}" />
+		<beans:property name="password" value="${jdbc.password}" />
+	</beans:bean>
+
+	<beans:bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<beans:property name="dataSource">
+			<beans:ref bean="dataSource" />
+		</beans:property>
+
+		<beans:property name="configLocation"
+			value="classpath:META-INF/hibernate.cfg.xml">
+		</beans:property>
+	</beans:bean>
+
+	<!-- Hibernate TransactionManager -->
+	<beans:bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+
+	<!-- Request & response handler configuration -->
+	<beans:bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters" ref="jsonMessageConverter" />
+	</beans:bean>
+	<beans:bean id="jsonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<beans:property name="supportedMediaTypes">
+			<beans:list>
+				<beans:value>text/html;charset=UTF-8</beans:value>
+				<beans:value>application/json;charset=UTF-8</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<beans:bean id="tagDao" class="org.cilab.s4rm.dao.impl.TagDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="tagService"
+		class="org.cilab.s4rm.service.impl.TagServiceImpl">
+		<beans:property name="tagDao" ref="tagDao" />
+	</beans:bean>
+
+	<beans:bean id="userDao" class="org.cilab.s4rm.dao.impl.UserDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="userService"
+		class="org.cilab.s4rm.service.impl.UserServiceImpl">
+		<beans:property name="userDao" ref="userDao" />
+	</beans:bean>
+	
+	<beans:bean id="metaDao" class="org.cilab.s4rm.dao.impl.MetaDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="metaService"
+		class="org.cilab.s4rm.service.impl.MetaServiceImpl">
+		<beans:property name="metaDao" ref="metaDao" />
+	</beans:bean>
+	
+	<beans:bean id="sensorDao" class="org.cilab.s4rm.dao.impl.SensorDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="sensorService"
+		class="org.cilab.s4rm.service.impl.SensorServiceImpl">
+		<beans:property name="sensorDao" ref="sensorDao" />
+	</beans:bean>
+	
+	<beans:bean id="streamDao" class="org.cilab.s4rm.dao.impl.StreamDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="streamService"
+		class="org.cilab.s4rm.service.impl.StreamServiceImpl">
+		<beans:property name="streamDao" ref="streamDao" />
+	</beans:bean>
+	
+	<beans:bean id="logDao" class="org.cilab.s4rm.dao.impl.LogDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="logService"
+		class="org.cilab.s4rm.service.impl.LogServiceImpl">
+		<beans:property name="logDao" ref="logDao" />
+	</beans:bean>
+	<beans:bean id="persistenceManager"
+		class="org.cilab.s4rm.subscribe.PersistenceManager">
+	</beans:bean>
+	
+	<beans:bean id="modelDao" class="org.cilab.m4.dao.impl.PredictionModelDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="modelService"
+		class="org.cilab.m4.service.impl.PredictionModelServiceImpl">
+		<beans:property name="modelDao" ref="modelDao" />
+	</beans:bean>
+	
+	<beans:bean id="dataSetDao" class="org.cilab.m4.dao.impl.DataSetDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="dataSetService"
+		class="org.cilab.m4.service.impl.DataSetServiceImpl">
+		<beans:property name="dataSetDao" ref="dataSetDao" />
+	</beans:bean>
+
+	<beans:bean id="variableDao" class="org.cilab.m4.dao.impl.VariableDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+
+	<beans:bean id="variableService"
+		class="org.cilab.m4.service.impl.VariableServiceImpl">
+		<beans:property name="variableDao" ref="variableDao" />
+	</beans:bean>
+
+	<beans:bean id="unitDao" class="org.cilab.m4.dao.impl.UnitDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="unitService" class="org.cilab.m4.service.impl.UnitServiceImpl">
+		<beans:property name="unitDao" ref="unitDao" />
+	</beans:bean>
+
+	<beans:bean id="entityDao" class="org.cilab.m4.dao.impl.EntityDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="entityService" class="org.cilab.m4.service.impl.EntityServiceImpl">
+		<beans:property name="entityDao" ref="entityDao" />
+	</beans:bean>
+	
+	<beans:bean id="fishDao" class="org.cilab.m4.dao.impl.FishDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="fishService"
+		class="org.cilab.m4.service.impl.FishServiceImpl">
+		<beans:property name="fishDao" ref="fishDao" />
+	</beans:bean>
+
+	<beans:bean id="sourceDao" class="org.cilab.m4.dao.impl.SourceDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="sourceService" class="org.cilab.m4.service.impl.SourceServiceImpl">
+		<beans:property name="sourceDao" ref="sourceDao" />
+	</beans:bean>
+
+	<beans:bean id="siteDao" class="org.cilab.m4.dao.impl.SiteDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="siteService" class="org.cilab.m4.service.impl.SiteServiceImpl">
+		<beans:property name="siteDao" ref="siteDao" />
+	</beans:bean>
+
+	<beans:bean id="methodDao" class="org.cilab.m4.dao.impl.MethodDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="methodService" class="org.cilab.m4.service.impl.MethodServiceImpl">
+		<beans:property name="methodDao" ref="methodDao" />
+	</beans:bean>
+	<beans:bean id="instrumentDao" class="org.cilab.m4.dao.impl.InstrumentDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="instrumentService"
+		class="org.cilab.m4.service.impl.InstrumentServiceImpl">
+		<beans:property name="instrumentDao" ref="instrumentDao" />
+	</beans:bean>
+	<beans:bean id="predictionDao" class="org.cilab.m4.dao.impl.PredictionDAOImpl">
+		<beans:constructor-arg>
+			<beans:ref bean="sessionFactory" />
+		</beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="predictionService"
+		class="org.cilab.m4.service.impl.PredictionServiceImpl">
+		<beans:property name="predictionDao" ref="predictionDao" />
+	</beans:bean>
+</beans:beans>
